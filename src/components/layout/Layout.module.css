@@ -1,0 +1,13 @@
+.bg {
+  justify-content: center;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+}
+
+.wrapper {
+  margin: auto;
+  min-width: 1024px;
+  max-width: 1200px;
+  padding: 72px 40px 0 40px;
+}

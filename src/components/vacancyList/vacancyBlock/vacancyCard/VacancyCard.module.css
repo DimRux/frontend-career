@@ -1,0 +1,92 @@
+.card {
+  display: grid;
+  background-color: var(--white-full);
+  padding: 32px;
+  gap: 16px;
+  border-radius: 16px;
+  cursor: pointer;
+  box-shadow: 0px 3px 15px 0px #00000008;
+  transition: box-shadow 0.2s;
+}
+
+.card:hover {
+  box-shadow: 4px 4px 15px 0px #00000014;
+}
+
+.card .salary {
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 500;
+}
+
+.main {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+}
+
+.headerBlock {
+  display: grid;
+  gap: 4px;
+}
+
+.title {
+  margin: 0;
+  gap: 16px;
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 700;
+  color: var(--black);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.controlsBlock {
+  display: flex;
+  justify-content: end;
+}
+
+.eye {
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+
+.card:hover .eye {
+  opacity: 100;
+}
+
+.upContent {
+  display: grid;
+  gap: 8px;
+}
+
+.additional {
+  display: grid;
+  gap: 16px;
+  font-size: 12px;
+  line-height: 16px;
+  font-weight: 500;
+}
+
+.experience {
+  display: flex;
+  gap: 8px;
+}
+
+@media (min-width: 1600px) {
+  .main {
+    grid-template-columns: 1fr 0.2fr;
+  }
+}
+
+@media (min-width: 1280px) and (max-width: 1599px) {
+  .main {
+    grid-template-columns: 1fr 0.3fr;
+  }
+}
+
+@media (max-width: 1279px) {
+  .main {
+    grid-template-columns: 1fr 0.8fr;
+  }
+}

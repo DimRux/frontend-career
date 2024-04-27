@@ -1,3 +1,3 @@
 # CareerApp
 
-Task 1: Виктор, Viktorline
+Task 1: Виктор Viktorline

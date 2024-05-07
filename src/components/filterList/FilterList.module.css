@@ -1,8 +1,36 @@
 .wrapper {
+  padding-top: 48px;
+}
+
+.list {
   display: grid;
   width: 100%;
   grid-template-columns: repeat(3, 1fr);
   gap: 32px;
-  padding: 48px 0 32px 0;
-  margin: 0;
+  margin-bottom: 16px;
+}
+
+.resetWrapper {
+  width: 100%;
+  text-align: end;
+}
+
+.reset {
+  font-weight: bold;
+  font-size: 12px;
+  line-height: 16px;
+}
+
+.filterItem {
+  transition: box-shadow 0.2s;
+  box-shadow: 0px 3px 15px 0px #00000008;
+}
+
+.filterItem:hover {
+  box-shadow: 4px 4px 15px 0px #00000014;
+}
+
+.briefCase {
+  padding-inline: 24px;
+  gap: 4px;
 }

@@ -1,0 +1,45 @@
+.item {
+  padding-block: 8px;
+}
+
+.input {
+  position: absolute;
+  visibility: hidden;
+}
+
+.label {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  font-weight: 500;
+}
+
+.label::before {
+  content: '';
+  width: 16px;
+  height: 16px;
+  border: 1.5px solid var(--grey);
+}
+
+.input[type='checkbox'] ~ .label::before {
+  border-radius: 4px;
+}
+
+.input[type='radio'] ~ .label::before {
+  border-radius: 50%;
+}
+
+.input:checked ~ .label::before {
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.input[type='checkbox']:checked ~ .label::before {
+  border: 2px solid var(--blue);
+  background-image: url(../../assets/img/checkMark.png);
+}
+
+.input[type='radio']:checked ~ .label::before {
+  border: none;
+  background-image: url(../../assets/img/radioButton.png);
+}

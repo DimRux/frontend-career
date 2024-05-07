@@ -1,17 +1,20 @@
 .wrapper {
   display: flex;
+  flex-direction: column;
   justify-content: space-between;
-  align-items: center;
   background-color: var(--white-full);
   border-radius: 16px;
   padding: 16px 24px;
+  gap: 16px;
+  position: relative;
+}
+
+.wrapper:not(:has(input)) {
   cursor: pointer;
-  transition: box-shadow 0.2s;
-  box-shadow: 0px 3px 15px 0px #00000008;
 }
 
 .wrapper:hover {
-  box-shadow: 4px 4px 15px 0px #00000014;
+  background-color: #ebf1fa;
 }
 
 .title {
@@ -21,4 +24,36 @@
   line-height: 16px;
   font-weight: 700;
   color: var(--darkGrey);
+  flex: 1;
+}
+
+.input {
+  background-color: transparent;
+  border: none;
+  outline: none;
+  width: 100%;
+  flex: 1;
+}
+
+.title[data-active='true'],
+.input[data-active='true'] {
+  color: var(--black);
+}
+
+.chevron {
+  transform: rotate(0);
+  transition: transform 0.3s;
+}
+
+.active {
+  transform: rotate(90deg);
+}
+
+.active path {
+  fill: var(--black);
+}
+
+.icon {
+  width: 16px;
+  height: 16px;
 }

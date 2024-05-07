@@ -12,6 +12,16 @@ html {
   box-sizing: inherit;
 }
 
+*::-webkit-scrollbar {
+  width: 4px;
+  background-color: transparent;
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #5c89ce;
+  border-radius: 2px;
+}
+
 body {
   margin: 0;
   min-width: 1024px;
@@ -21,7 +31,10 @@ body {
 
 input,
 textarea {
-  font-family: var(--std-font-family);
+  font-size: inherit;
+  line-height: inherit;
+  font-weight: inherit;
+  color: inherit;
 }
 
 input:disabled,
@@ -47,6 +60,7 @@ li,
 ul {
   list-style: none;
   margin: 0;
+  padding: 0;
 }
 
 .list-reset {

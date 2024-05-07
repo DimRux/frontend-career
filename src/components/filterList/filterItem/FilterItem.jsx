@@ -1,17 +1,62 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styles from './FilterItem.module.css';
 import Icon from '../../icon/Icon';
+import Button from '../../button/Button';
 
-const FilterItem = ({ children, iconName, needChevron }) => {
+const FilterItem = ({
+  iconName,
+  type = 'dropdown',
+  text,
+  isOpenFilter,
+  onClick,
+  children,
+  className,
+}) => {
+  const [value, setValue] = useState('');
+
+  const handleChange = (e) => {
+    setValue(e.target.value);
+  };
+
   return (
-    // какой инпут пока не известно
-    <li className={styles.wrapper}>
-      <div className={styles.title}>
-        <Icon name={iconName} />
-        <span>{children}</span>
-      </div>
-      {needChevron && <Icon name={'chevron'} />}
-    </li>
+    <>
+      <li className={`${styles.wrapper} ${className}`} onClick={onClick}>
+        <div
+          className={styles.title}
+          data-active={isOpenFilter ? 'true' : 'false'}
+        >
+          <Icon name={iconName} className={styles.icon} />
+          {(type === 'input' && (
+            <input
+              className={styles.input}
+              type='text'
+              placeholder={text}
+              value={value}
+              onChange={handleChange}
+              data-active={value ? 'true' : 'false'}
+            />
+          )) || <span className={styles.input}>{text}</span>}
+          {(type === 'dropdown' && (
+            <Icon
+              name='chevron'
+              className={`${styles.chevron} ${
+                isOpenFilter ? styles.active : ''
+              }`}
+            />
+          )) ||
+            (value && (
+              <Button
+                onClick={() => {
+                  setValue('');
+                }}
+              >
+                <Icon name='clear' />
+              </Button>
+            ))}
+        </div>
+        {isOpenFilter && children}
+      </li>
+    </>
   );
 };
 

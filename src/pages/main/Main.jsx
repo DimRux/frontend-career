@@ -2,7 +2,7 @@ import React from 'react';
 import styles from './Main.module.css';
 import FilterList from '../../components/filterList/FilterList';
 import VacancyList from '../../components/vacancyList/VacancyList';
-import { API_DATA } from '../../data';
+import { API_DATA } from '../../data/apiData';
 
 const Main = () => {
   return (

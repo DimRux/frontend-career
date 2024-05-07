@@ -8,7 +8,7 @@ const VacancyBlock = ({ title, cards }) => {
       <h3 className={styles.title}>{title}</h3>
       <ul className={styles.cardsBlock}>
         {cards.map((card, index) => (
-          <VacancyCard card={card} index={index} />
+          <VacancyCard card={card} index={index} key={index} />
         ))}
       </ul>
     </li>

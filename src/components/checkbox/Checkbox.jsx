@@ -1,17 +1,11 @@
 import styles from './Checkbox.module.css';
 
-const Checkbox = ({
-  list,
-  id = '0',
-  type = 'checkbox',
-  needBlockedMainScroll = false,
-}) => {
+const Checkbox = ({ list, id = '0', type = 'checkbox' }) => {
   return (
     <>
       {list.map((item, index) => (
         <li
           key={index}
-          className={styles.item}
           onClick={(e) => {
             e.stopPropagation();
           }}

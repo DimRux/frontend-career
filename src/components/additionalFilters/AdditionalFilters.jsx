@@ -17,35 +17,23 @@ const AdditionalFilters = ({ list }) => {
   };
 
   return list.map((item, index) => (
-    <div key={index}>
-      <FilterItem
-        iconName={item.icon}
-        text={item.title}
-        isOpenFilter={isOpenFilter[index]}
-        onClick={(e) => {
-          toggleFilter(e, index);
-        }}
-      >
-        <NestedLayout>
-          {item.radio && (
-            <Checkbox
-              list={item.radio}
-              type='radio'
-              id={item.id}
-              needBlockedMainScroll={true}
-            />
-          )}
-          {item.checkbox && (
-            <Checkbox
-              list={item.checkbox}
-              type='checkbox'
-              id={item.id}
-              needBlockedMainScroll={true}
-            />
-          )}
-        </NestedLayout>
-      </FilterItem>
-    </div>
+    <FilterItem
+      key={index}
+      iconName={item.icon}
+      text={item.title}
+      isOpenFilter={isOpenFilter[index]}
+      level='low'
+      onClick={(e) => {
+        toggleFilter(e, index);
+      }}
+    >
+      <NestedLayout>
+        {item.radio && <Checkbox list={item.radio} type='radio' id={item.id} />}
+        {item.checkbox && (
+          <Checkbox list={item.checkbox} type='checkbox' id={item.id} />
+        )}
+      </NestedLayout>
+    </FilterItem>
   ));
 };
 

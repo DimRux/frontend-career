@@ -9,6 +9,7 @@ const FilterItem = ({
   text,
   isOpenFilter,
   onClick,
+  level,
   children,
   className,
 }) => {
@@ -20,7 +21,11 @@ const FilterItem = ({
 
   return (
     <>
-      <li className={`${styles.wrapper} ${className}`} onClick={onClick}>
+      <li
+        className={`${styles.wrapper} ${className}`}
+        onClick={onClick}
+        data-level={level}
+      >
         <div
           className={styles.title}
           data-active={isOpenFilter ? 'true' : 'false'}
@@ -50,7 +55,7 @@ const FilterItem = ({
                   setValue('');
                 }}
               >
-                <Icon name='clear' />
+                <Icon name='clear' className={styles.iconClear} />
               </Button>
             ))}
         </div>

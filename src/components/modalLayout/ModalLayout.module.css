@@ -3,10 +3,11 @@
   width: 100%;
   top: 50px;
   left: 0;
-  padding-block: 8px;
   background-color: var(--white-full);
   max-height: calc(100vh - 200px);
   overflow: auto;
+  scrollbar-gutter: stable;
+  box-shadow: var(--shadow);
 }
 
 .modal ul {

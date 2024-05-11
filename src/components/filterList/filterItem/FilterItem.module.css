@@ -13,8 +13,36 @@
   cursor: pointer;
 }
 
-.wrapper:hover {
+.wrapper[data-level='low'] {
+  border-top: 1px solid;
+  border-image-source: linear-gradient(
+    90deg,
+    rgba(239, 239, 239, 0) 0%,
+    #efefef 19.5%,
+    #efefef 83%,
+    rgba(239, 239, 239, 0) 100%
+  );
+}
+
+.wrapper[data-level='low'] .icon {
+  margin-left: 4px;
+}
+
+.wrapper[data-level='low']:hover .chevron path {
+  fill: var(--black);
+}
+
+.wrapper[data-level='low']:hover .title {
+  color: var(--black);
+}
+
+.wrapper:not([data-level='low']):hover {
   background-color: #ebf1fa;
+}
+
+.wrapper:has(.active) {
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
 }
 
 .title {
@@ -56,4 +84,8 @@
 .icon {
   width: 16px;
   height: 16px;
+}
+
+.iconClear:hover > path {
+  fill: var(--blue);
 }

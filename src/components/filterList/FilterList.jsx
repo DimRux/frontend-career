@@ -35,6 +35,7 @@ const FilterList = () => {
             setShowAdditionalFilters(!showAdditionalFilters);
           }}
           isOpenFilter={showAdditionalFilters}
+          level='high'
           className={styles.filterItem}
         >
           <ModalLayout>

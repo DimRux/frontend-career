@@ -1,10 +1,8 @@
-.item {
-  padding-block: 8px;
-}
-
 .input {
   position: absolute;
   visibility: hidden;
+  padding-block: 8px;
+  cursor: pointer;
 }
 
 .label {
@@ -12,6 +10,8 @@
   gap: 16px;
   align-items: center;
   font-weight: 500;
+  padding-block: 8px;
+  cursor: pointer;
 }
 
 .label::before {

@@ -1,13 +1,34 @@
-import React, { useState } from 'react';
-import styles from './VacancyList.module.css';
+import React, { useEffect } from 'react';
 import VacancyBlock from './vacancyBlock/VacancyBlock';
+import { useVacancyStore } from '../../store/vacancyStore';
+import styles from './VacancyList.module.css';
+import SkeletonVacancyList from './SkeletonVacancyList';
 
-const VacancyList = ({ data }) => {
+
+const VacancyList = () => {
+  const [vacancies, fetchVacancy, loadingVacancies, errorVacancies] = useVacancyStore(
+    (state)=>[
+      state.list,
+      state.fetch,
+      state.loading,
+      state.error
+    ]
+  );
+  useEffect(()=>{
+    fetchVacancy('Москва', true);
+  },[]);
+
+  if(errorVacancies) {
+    return errorVacancies;
+  }
+
   return (
     <ul className={styles.wrapper}>
-      {data.map((item) => (
-        <VacancyBlock key={item.date} title={item.date} cards={item.cards} />
-      ))}
+      {
+        loadingVacancies 
+        ? <SkeletonVacancyList/>
+        : vacancies.map(item => <VacancyBlock key={item.date} title={item.date} cards={item.items} />)
+      }
     </ul>
   );
 };

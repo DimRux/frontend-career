@@ -7,7 +7,7 @@ const currency = {
 };
 
 export const parseResultVacancy = (arr=[]) => {
-  arr.sort((a, b) => new Date(b.published_at) - new Date(a.published_at));
+  //arr.sort((a, b) => new Date(b.published_at) - new Date(a.published_at));
 
   return arr.map((el)=>{
     let salary = '';

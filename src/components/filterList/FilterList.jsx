@@ -6,14 +6,20 @@ import ModalLayout from '../modalLayout/ModalLayout';
 import Checkbox from '../checkbox/Checkbox';
 import { briefCase, otherFiltersData } from '../../data/filterData';
 import AdditionalFilters from '../additionalFilters/AdditionalFilters';
+import { useClickOutside } from '../../hooks/useClickOutside';
 
 const FilterList = () => {
   const [showBriefCase, setShowBriefCase] = useState(false);
   const [showAdditionalFilters, setShowAdditionalFilters] = useState(false);
 
+  const ref = useClickOutside(() => {
+    setShowBriefCase(false)
+    setShowAdditionalFilters(false)
+  });
+
   return (
     <section className={styles.wrapper}>
-      <ul className={styles.list}>
+      <ul className={styles.list} ref={ref}>
         <FilterItem iconName='plane' type='input' text='Город' />
         <FilterItem
           iconName='briefCase'
@@ -23,6 +29,7 @@ const FilterList = () => {
           }}
           isOpenFilter={showBriefCase}
           className={styles.filterItem}
+
         >
           <ModalLayout className={styles.briefCase}>
             <Checkbox list={briefCase} />

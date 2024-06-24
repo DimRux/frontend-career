@@ -8,8 +8,8 @@ const VacancyCard = ({ card }) => {
       <div className={styles.main}>
         <div className={styles.headerBlock}>
           <h4 className={styles.title} title={card.name}>
-            <a 
-              href={card.url} 
+            <a
+              href={card.url}
               target='_blank'>{card.name}</a>
           </h4>
           <p className={styles.salary}>{card.salaryFormat}</p>

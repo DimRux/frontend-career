@@ -1,12 +1,10 @@
 .wrapper {
   display: grid;
   width: 100%;
-
   gap: 32px;
   padding: 32px 0 32px 0;
   margin: 0;
 }
-
 
 .skeleton {
   display: flex;
@@ -42,11 +40,11 @@
   display: flex;
   flex-direction: column;
 }
-.skeleton-header{
+.skeleton-header {
   row-gap: 4px;
 }
 
-.skeleton-body{
+.skeleton-body {
   row-gap: 8px;
 }
 
@@ -56,7 +54,7 @@
 .skeleton-body::after,
 .skeleton-footer::before,
 .skeleton-footer::after {
-  content: '';
+  content: "";
   border-radius: var(--border-radius);
   background-color: var(--gray);
 }

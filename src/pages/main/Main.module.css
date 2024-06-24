@@ -6,3 +6,9 @@
   display: grid;
   width: 100%;
 }
+
+.pagination {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}

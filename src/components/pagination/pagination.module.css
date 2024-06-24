@@ -1,0 +1,45 @@
+.wrapper {
+  display: flex;
+  list-style-type: none;
+  gap: 8px;
+}
+
+.item {
+  text-align: center;
+  color: var(--black);
+  padding: 12px;
+  min-width: 53px;
+}
+
+.btn {
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 143%;
+  text-align: center;
+  color: var(--black);
+  padding: 12px;
+  min-width: 53px;
+  border-radius: var(--border-radius);
+  background-color: #ebf1fa;
+  transition: color 0.2s ease, background-color 0.2s ease;
+}
+
+.btn:hover {
+  background-color: var(--lightBlue);
+  color: var(--white-full);
+  transition: color 0.2s ease, background-color 0.2s ease;
+}
+
+.btn.active {
+  background-color: var(--blue);
+  color: var(--white-full);
+  transition: color 0.2s ease, background-color 0.2s ease;
+}
+
+.hidden {
+  display: none;
+}
+
+.disabled {
+  pointer-events: none;
+}

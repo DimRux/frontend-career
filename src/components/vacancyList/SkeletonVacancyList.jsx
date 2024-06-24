@@ -2,7 +2,7 @@ import styles from './VacancyList.module.css';
 
 const skeletons = [];
 
-for(let i=0; i<8; i++) {
+for (let i = 0; i < 8; i++) {
   skeletons.push('');
 }
 
@@ -12,7 +12,7 @@ const SkeletonVacancyList = () => {
       <div className={styles['skeleton-title']}></div>
       <ul className={styles['skeleton-list']}>
         {
-          skeletons.map((_, index)=>
+          skeletons.map((_, index) =>
             <li key={index} className={styles['skeleton-item']}>
               <div className={styles['skeleton-header']}></div>
               <div className={styles['skeleton-body']}></div>

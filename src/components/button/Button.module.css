@@ -12,6 +12,7 @@
 
 .disabled {
   color: var(--grey);
+  pointer-events: none;
 }
 
 .disabled:hover {

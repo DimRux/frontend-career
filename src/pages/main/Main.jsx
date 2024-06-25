@@ -9,7 +9,7 @@ import { CARD_FOR_PAGE } from '../../constatns';
 
 const Main = () => {
 
-  const { page, setPage, totalCountPage, fetch } = useVacancyStore()
+  const { page, setPage, totalCountPage, fetch, loading } = useVacancyStore()
 
   useEffect(() => {
     fetch('', false, page);
@@ -31,6 +31,7 @@ const Main = () => {
           totalCount={totalCountPage}
           pageSize={CARD_FOR_PAGE}
           onPageChange={page => setPage(page)}
+          disabled={loading}
         />
       </div>
     </main>

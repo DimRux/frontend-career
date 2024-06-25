@@ -30,7 +30,7 @@
   transition: color 0.2s ease, background-color 0.2s ease;
 }
 
-.btn.active {
+.active {
   background-color: var(--blue);
   color: var(--white-full);
   transition: color 0.2s ease, background-color 0.2s ease;

@@ -9,7 +9,8 @@ export const Pagination = ({ onPageChange,
   siblingCount = 1,
   currentPage,
   pageSize,
-  className }) => {
+  className,
+  disabled }) => {
 
   const paginationRange = usePagination({
     currentPage,
@@ -38,6 +39,7 @@ export const Pagination = ({ onPageChange,
             <Button
               className={`${styles.btn} ${pageNumber === currentPage && styles.active}`}
               onClick={() => onPageChange(pageNumber)}
+              disabled={disabled}
             >
               {pageNumber}
             </Button>

@@ -11,7 +11,7 @@ export const usePagination = ({
   siblingCount = 1,
   currentPage
 }) => {
-  const totalPageCount = Math.floor(totalCount / pageSize);
+  const totalPageCount = Math.ceil(totalCount / pageSize);
 
   const totalPageNumbers = siblingCount + 5;
 

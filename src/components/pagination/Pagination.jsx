@@ -27,25 +27,21 @@ export const Pagination = ({ onPageChange,
     <ul
       className={`${styles.wrapper} ${className}`}
     >
-      {paginationRange.map((pageNumber, index) => {
-        if (pageNumber === DOTS) {
-          return <li
-            key={index}
-            className={`${styles.item}`}
-          >{DOTS}</li>;
-        }
-        return (
-          <li key={index}>
+      {paginationRange.map((pageNumber, index) =>
+        <li
+          key={index}
+          className={pageNumber === DOTS ? styles.item : ''}
+        >
+          {pageNumber === DOTS ? DOTS :
             <Button
               className={`${styles.btn} ${pageNumber === currentPage && styles.active}`}
               onClick={() => onPageChange(pageNumber)}
               disabled={disabled}
             >
               {pageNumber}
-            </Button>
-          </li>
-        );
-      })}
+            </Button>}
+        </li>
+      )}
     </ul>
   );
 };

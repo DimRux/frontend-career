@@ -1,6 +1,7 @@
 import { create } from 'zustand'
 import { CARD_FOR_PAGE } from '../constatns';
 import { groupResultVacancyByDate, parseResultVacancy, schemeResultVacancy } from '../utils/parse-vacancy';
+import { scrollTop } from '../utils/scrollTop';
 
 const defQuery = 'frontend';
 const defOnlyWithSalary = 'true';
@@ -18,7 +19,7 @@ export const useVacancyStore = create((set) => ({
     try {
       set({ loading: true });
 
-      const response = await fetch(`https://api.hh.ru/vacancies/?text=${defQuery}${city}&only_with_salary=${defOnlyWithSalary}&order_by=${defSort}&per_page=${CARD_FOR_PAGE}&page=${page ?? 1}`);
+      const response = await fetch(`https://api.hh.ru/vacancies/?text=${defQuery}${city}&only_with_salary=${defOnlyWithSalary}&order_by=${defSort}&per_page=${CARD_FOR_PAGE}&page=${page - 1 ?? 0}`); /* page - 1 тк HH ищет с 0 */
 
       if (!response.ok) throw new Error('Что-то пошло не так. Попробуйте позже');
 
@@ -31,6 +32,7 @@ export const useVacancyStore = create((set) => ({
       const group = groupResultVacancyByDate(res);
       set({ totalCountPage: result.found });
       set({ list: today ? [group[0]] : group });
+      scrollTop();
 
     } catch (e) {
 

@@ -2,7 +2,7 @@ import styles from './VacancyList.module.css';
 
 const skeletons = [];
 
-for (let i = 0; i < 8; i++) {
+for (let i = 0; i < 18; i++) {
   skeletons.push('');
 }
 

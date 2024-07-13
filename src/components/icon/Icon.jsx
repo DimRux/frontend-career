@@ -4,6 +4,7 @@ import { Plane } from './icons/Plane';
 import { BriefCase } from './icons/BriefCase';
 import { Filter } from './icons/Filter';
 import { Chevron } from './icons/Chevron';
+import { Chevron2 } from './icons/Chevron2';
 import { SlashEye } from './icons/SlashEye';
 import { Star } from './icons/Star';
 import { Clear } from './icons/Clear';
@@ -14,6 +15,7 @@ import { Graduation } from './icons/Graduation';
 import { Salary } from './icons/Salary';
 import { TomeJob } from './icons/TomeJob';
 import { MoreFilters } from './icons/MoreFilters';
+import { Eye } from './icons/Eye';
 
 const Icon = ({ className, name }) => {
   switch (name) {
@@ -27,6 +29,10 @@ const Icon = ({ className, name }) => {
       return <Filter className={className} />;
     case 'chevron':
       return <Chevron className={className} />;
+    case 'chevron2':
+      return <Chevron2 className={className} />;
+    case 'eye':
+      return <Eye className={className} />;
     case 'slashEye':
       return <SlashEye className={className} />;
     case 'star':

@@ -4,6 +4,7 @@ import styles from './VacancyList.module.css';
 import SkeletonVacancyList from './SkeletonVacancyList';
 
 
+
 const VacancyList = () => {
   const [vacancies, loadingVacancies] = useVacancyStore(
     (state) => [
@@ -11,7 +12,6 @@ const VacancyList = () => {
       state.loading,
     ]
   );
-
   return (
     <ul className={styles.wrapper}>
       {

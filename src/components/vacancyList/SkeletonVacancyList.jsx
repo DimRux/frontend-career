@@ -1,18 +1,12 @@
 import styles from './VacancyList.module.css';
 
-const skeletons = [];
-
-for (let i = 0; i < 18; i++) {
-  skeletons.push('');
-}
-
-const SkeletonVacancyList = () => {
+const SkeletonVacancyList = ({length = 18, title = true}) => {
   return (
     <div className={styles.skeleton}>
-      <div className={styles['skeleton-title']}></div>
+      {title && <div className={styles['skeleton-title']}></div>}
       <ul className={styles['skeleton-list']}>
         {
-          skeletons.map((_, index) =>
+          Array.from({length:length}).map((_, index) =>
             <li key={index} className={styles['skeleton-item']}>
               <div className={styles['skeleton-header']}></div>
               <div className={styles['skeleton-body']}></div>

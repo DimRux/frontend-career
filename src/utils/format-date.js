@@ -28,4 +28,17 @@ export const formatTitleDate = (strDate='') => {
   return result;
 };
 
+export const formatDate = (date) => {
+  
+  const parameters = {
+    day: 'numeric',
+    month: 'long',
+    year: "numeric"
+  };
+
+  const formatter = new Intl.DateTimeFormat('ru', parameters);
+
+  return formatter.format(new Date(date))
+}
+
 

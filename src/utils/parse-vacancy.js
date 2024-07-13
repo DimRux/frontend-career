@@ -39,6 +39,13 @@ export const parseResultVacancy = (arr=[]) => {
   });
 };
 
+export const formatSalary = (salary) => {
+  if(salary.includes('-')) {
+    return `от ${salary.replace('-', 'до')} на руки`
+  }
+  return salary
+}
+
 export const schemeResultVacancy = (arr=[]) => {
   return arr.map((el)=>{
     return {

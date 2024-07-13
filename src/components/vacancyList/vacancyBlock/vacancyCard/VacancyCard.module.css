@@ -52,6 +52,14 @@
   justify-content: end;
 }
 
+.controlsBlock button {
+  height: min-content;
+  cursor: pointer;
+  background: transparent;
+  border: none;
+  outline: 0;
+}
+
 .eye {
   opacity: 0;
   transition: opacity 0.2s;
@@ -83,6 +91,10 @@
 .experience {
   display: flex;
   gap: 8px;
+}
+
+.hidden {
+  display: none;
 }
 
 @media (min-width: 1600px) {

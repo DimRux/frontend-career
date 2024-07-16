@@ -2,7 +2,7 @@ import React from 'react';
 import styles from './VacancyBlock.module.css';
 import VacancyCard from './vacancyCard/VacancyCard';
 import { formatTitleDate } from '../../../utils/format-date';
-import { useVacancyHidden } from '../../../store/vacancyStore';
+import { useVacancyHidden } from '../../../store';
 
 const VacancyBlock = ({ title, cards }) => {
 

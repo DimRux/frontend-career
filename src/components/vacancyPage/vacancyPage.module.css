@@ -62,6 +62,7 @@
 
 .needs__list {
     display: flex;
+    flex-wrap: wrap;
     gap: 32px;
 }
 
@@ -69,6 +70,7 @@
     display: flex;
     align-items: center;
     gap: 16px;
+    white-space: nowrap;
 }
 
 .vacancy__btn {
@@ -168,6 +170,7 @@
 
 .vacancies__btn {
     padding: 16px 24px;
+    margin: 0 auto;
     margin-bottom: 32px;
     border-radius: 16px;
     background: var(--blue);

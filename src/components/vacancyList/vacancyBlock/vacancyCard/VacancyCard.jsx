@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from './VacancyCard.module.css';
 import Icon from '../../../icon/Icon';
-import { useVacancyHidden, useVacancyLocal } from '../../../../store/vacancyStore';
+import { useVacancyHidden, useVacancyLocal } from '../../../../store';
 
 
 const VacancyCard = ({ card }) => {

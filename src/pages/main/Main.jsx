@@ -4,7 +4,7 @@ import { VacancyListPagination } from '../../components/vacancyListPagination/Va
 
 import styles from './Main.module.css';
 import { VacancyPage } from '../../components/vacancyPage/vacancyPage';
-import { useVacancyLocal } from '../../store/vacancyStore';
+import { useVacancyLocal } from '../../store';
 
 const Main = () => {
   const {isOpen} = useVacancyLocal()

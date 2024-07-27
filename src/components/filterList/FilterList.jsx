@@ -1,58 +1,35 @@
-import React, { useState } from 'react';
-import styles from './FilterList.module.css';
-import FilterItem from './filterItem/FilterItem';
-import Button from '../button/Button';
-import ModalLayout from '../modalLayout/ModalLayout';
-import Checkbox from '../checkbox/Checkbox';
-import { briefCase, otherFiltersData } from '../../data/filterData';
-import AdditionalFilters from '../additionalFilters/AdditionalFilters';
-import { useClickOutside } from '../../hooks/useClickOutside';
+import Button from "../button/Button";
+import AdditionalFilters from "../additionalFilters/AdditionalFilters";
+import { useFiltersStore } from "../../store/filtersStore";
+import CityFilter from "../cityFilter/CityFilter";
+import EmploymentFilter from "../employmentFilter/EmploymentFilter";
+import styles from "./FilterList.module.css";
+import { useEffect } from "react";
+import { updateUrlWithFilters } from "../../utils/updateUrlWithFilters";
 
 const FilterList = () => {
-  const [showBriefCase, setShowBriefCase] = useState(false);
-  const [showAdditionalFilters, setShowAdditionalFilters] = useState(false);
+  const { params, reset, isChanged } = useFiltersStore();
 
-  const ref = useClickOutside(() => {
-    setShowBriefCase(false)
-    setShowAdditionalFilters(false)
-  });
+  const isResetBtnShown = isChanged();
+
+  useEffect(() => {
+    updateUrlWithFilters(params);
+  }, [params]);
 
   return (
     <section className={styles.wrapper}>
-      <ul className={styles.list} ref={ref}>
-        <FilterItem iconName='plane' type='input' text='Город' />
-        <FilterItem
-          iconName='briefCase'
-          text='Тип занятости'
-          onClick={() => {
-            setShowBriefCase(!showBriefCase);
-          }}
-          isOpenFilter={showBriefCase}
-          className={styles.filterItem}
-
-        >
-          <ModalLayout className={styles.briefCase}>
-            <Checkbox list={briefCase} />
-          </ModalLayout>
-        </FilterItem>
-        <FilterItem
-          iconName={'filter'}
-          text='Дополнительные фильтры'
-          onClick={() => {
-            setShowAdditionalFilters(!showAdditionalFilters);
-          }}
-          isOpenFilter={showAdditionalFilters}
-          level='high'
-          className={styles.filterItem}
-        >
-          <ModalLayout>
-            <AdditionalFilters list={otherFiltersData} />
-          </ModalLayout>
-        </FilterItem>
+      <ul className={styles.list}>
+        <CityFilter className={styles.filterItem} />
+        <EmploymentFilter className={styles.filterItem} />
+        <AdditionalFilters className={styles.filterItem} />
       </ul>
-      <div className={styles.resetWrapper}>
-        <Button className={styles.reset}>Сбросить все фильтры</Button>
-      </div>
+      {isResetBtnShown && (
+        <div className={styles.resetWrapper}>
+          <Button className={styles.reset} onClick={reset}>
+            Сбросить все фильтры
+          </Button>
+        </div>
+      )}
     </section>
   );
 };

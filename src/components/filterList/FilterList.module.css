@@ -22,15 +22,11 @@
 }
 
 .filterItem {
+  height: 48px;
   transition: box-shadow 0.2s;
   box-shadow: var(--shadow);
 }
 
 .filterItem:hover {
   box-shadow: var(--hover-shadow);
-}
-
-.briefCase {
-  gap: 4px;
-  padding: 8px 24px;
 }

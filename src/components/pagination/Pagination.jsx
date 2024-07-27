@@ -1,22 +1,23 @@
-import React from 'react';
-import { DOTS } from '../../constatns';
-import { usePagination } from '../../hooks/usePagination';
-import Button from '../button/Button';
-import styles from './pagination.module.css'
+import React from "react";
+import { DOTS } from "../../constants";
+import { usePagination } from "../../hooks/usePagination";
+import Button from "../button/Button";
+import styles from "./pagination.module.css";
 
-export const Pagination = ({ onPageChange,
+export const Pagination = ({
+  onPageChange,
   totalCount,
   siblingCount = 1,
   currentPage,
   pageSize,
   className,
-  disabled }) => {
-
+  disabled,
+}) => {
   const paginationRange = usePagination({
     currentPage,
     totalCount,
     siblingCount,
-    pageSize
+    pageSize,
   });
 
   if (currentPage === 0 || paginationRange.length < 2) {
@@ -24,24 +25,24 @@ export const Pagination = ({ onPageChange,
   }
 
   return (
-    <ul
-      className={`${styles.wrapper} ${className}`}
-    >
-      {paginationRange.map((pageNumber, index) =>
-        <li
-          key={index}
-          className={pageNumber === DOTS ? styles.item : ''}
-        >
-          {pageNumber === DOTS ? DOTS :
+    <ul className={`${styles.wrapper} ${className}`}>
+      {paginationRange.map((pageNumber, index) => (
+        <li key={index} className={pageNumber === DOTS ? styles.item : ""}>
+          {pageNumber === DOTS ? (
+            DOTS
+          ) : (
             <Button
-              className={`${styles.btn} ${pageNumber === currentPage && styles.active}`}
+              className={`${styles.btn} ${
+                pageNumber === currentPage && styles.active
+              }`}
               onClick={() => onPageChange(pageNumber)}
               disabled={disabled}
             >
               {pageNumber}
-            </Button>}
+            </Button>
+          )}
         </li>
-      )}
+      ))}
     </ul>
   );
 };

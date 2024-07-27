@@ -1,12 +1,22 @@
-import { useState } from 'react';
-import FilterItem from '../filterList/filterItem/FilterItem';
-import Checkbox from '../checkbox/Checkbox';
-import NestedLayout from '../nestedLayout/NestedLayout';
+import { useState } from "react";
+import FilterItem from "../filterList/filterItem/FilterItem";
+import Checkbox from "../checkbox/Checkbox";
+import NestedLayout from "../nestedLayout/NestedLayout";
+import { useFiltersStore } from "../../store/filtersStore";
+import { useClickOutside } from "../../hooks/useClickOutside";
+import { otherFiltersData } from "../../data/filterData";
+import ModalLayout from "../modalLayout/ModalLayout";
 
-const AdditionalFilters = ({ list }) => {
+const AdditionalFilters = ({ className }) => {
+  const { set, isChecked } = useFiltersStore();
+  const [showDropdown, setShowDropdown] = useState(false);
   const [isOpenFilter, setIsOpenFilter] = useState(() =>
-    Object.fromEntries(list.map((_, index) => [index, false]))
+    Object.fromEntries(otherFiltersData.map((_, index) => [index, false]))
   );
+
+  const ref = useClickOutside(() => {
+    setShowDropdown(false);
+  });
 
   const toggleFilter = (e, index) => {
     e.stopPropagation();
@@ -16,25 +26,40 @@ const AdditionalFilters = ({ list }) => {
     }));
   };
 
-  return list.map((item, index) => (
+  return (
     <FilterItem
-      key={index}
-      iconName={item.icon}
-      text={item.title}
-      isOpenFilter={isOpenFilter[index]}
-      level='low'
-      onClick={(e) => {
-        toggleFilter(e, index);
-      }}
+      ref={ref}
+      iconName="filter"
+      text="Дополнительные фильтры"
+      onClick={() => setShowDropdown((prev) => !prev)}
+      isOpenFilter={showDropdown}
+      level="high"
+      className={className}
     >
-      <NestedLayout>
-        {item.radio && <Checkbox list={item.radio} type='radio' id={item.id} />}
-        {item.checkbox && (
-          <Checkbox list={item.checkbox} type='checkbox' id={item.id} />
-        )}
-      </NestedLayout>
+      <ModalLayout>
+        {otherFiltersData.map((item, index) => (
+          <FilterItem
+            key={index}
+            iconName={item.icon}
+            text={item.text}
+            isOpenFilter={isOpenFilter[index]}
+            level="low"
+            onClick={(e) => {
+              toggleFilter(e, index);
+            }}
+          >
+            <NestedLayout>
+              <Checkbox
+                list={item.items}
+                onChange={(field, value) => set(field, value)}
+                isChecked={(field, value) => isChecked(field, value)}
+              />
+            </NestedLayout>
+          </FilterItem>
+        ))}
+      </ModalLayout>
     </FilterItem>
-  ));
+  );
 };
 
 export default AdditionalFilters;

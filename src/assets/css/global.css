@@ -29,6 +29,10 @@ body {
   background: var(--white-cream);
 }
 
+button {
+  font-family: inherit;
+}
+
 input,
 textarea {
   font-family: inherit;

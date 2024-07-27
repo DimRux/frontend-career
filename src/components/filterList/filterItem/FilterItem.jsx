@@ -1,68 +1,71 @@
-import React, { useState } from 'react';
-import styles from './FilterItem.module.css';
-import Icon from '../../icon/Icon';
-import Button from '../../button/Button';
+import React, { forwardRef } from "react";
+import styles from "./FilterItem.module.css";
+import Icon from "../../icon/Icon";
+import Button from "../../button/Button";
 
-const FilterItem = ({
-  iconName,
-  type = 'dropdown',
-  text,
-  isOpenFilter,
-  onClick,
-  level,
-  children,
-  className,
-}) => {
-  const [value, setValue] = useState('');
-
-  const handleChange = (e) => {
-    setValue(e.target.value);
-  };
+const FilterItem = forwardRef((props, ref) => {
+  const {
+    iconName,
+    type = "dropdown",
+    text,
+    value,
+    onChange,
+    isOpenFilter,
+    onClick,
+    level,
+    children,
+    className,
+    count,
+    ...otherProps
+  } = props;
 
   return (
     <>
       <li
+        ref={ref}
         className={`${styles.wrapper} ${className}`}
         onClick={onClick}
         data-level={level}
+        {...otherProps}
       >
         <div
           className={styles.title}
-          data-active={isOpenFilter ? 'true' : 'false'}
+          data-active={isOpenFilter ? "true" : "false"}
         >
           <Icon name={iconName} className={styles.icon} />
-          {(type === 'input' && (
+          {type === "input" ? (
             <input
               className={styles.input}
-              type='text'
+              type="text"
               placeholder={text}
               value={value}
-              onChange={handleChange}
-              data-active={value ? 'true' : 'false'}
+              onChange={onChange}
+              data-active={value ? "true" : "false"}
             />
-          )) || <span className={styles.input}>{text}</span>}
-          {(type === 'dropdown' && (
+          ) : (
+            <span className={styles.input}>{text}</span>
+          )}
+          {count > 0 && !value && (
+            <div className={styles.countBadge}>{count}</div>
+          )}
+          {type === "dropdown" && (
             <Icon
-              name='chevron'
+              name="chevron"
               className={`${styles.chevron} ${
-                isOpenFilter ? styles.active : ''
+                isOpenFilter ? styles.active : ""
               }`}
             />
-          )) ||
-            (value && (
-              <Button
-                onClick={() => {
-                  setValue('');
-                }}
-              >
-                <Icon name='clear' className={styles.iconClear} />
-              </Button>
-            ))}
+          )}
+          {type === "input" && value && (
+            <Button onClick={() => onChange({ target: { value: "" } })}>
+              <Icon name="clear" className={styles.iconClear} />
+            </Button>
+          )}
         </div>
         {isOpenFilter && children}
       </li>
     </>
   );
-};
+});
 
 export default FilterItem;

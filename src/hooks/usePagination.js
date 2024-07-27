@@ -1,4 +1,4 @@
-import { DOTS } from "../constatns";
+import { DOTS } from "../constants";
 
 const range = (start, end) => {
   let length = end - start + 1;
@@ -9,7 +9,7 @@ export const usePagination = ({
   totalCount,
   pageSize,
   siblingCount = 1,
-  currentPage
+  currentPage,
 }) => {
   const totalPageCount = Math.ceil(totalCount / pageSize);
 
@@ -40,10 +40,7 @@ export const usePagination = ({
 
   if (shouldShowLeftDots && !shouldShowRightDots) {
     let rightItemCount = 2 + 2 * siblingCount;
-    let rightRange = range(
-      totalPageCount - rightItemCount + 1,
-      totalPageCount
-    );
+    let rightRange = range(totalPageCount - rightItemCount + 1, totalPageCount);
     return [firstPageIndex, DOTS, ...rightRange];
   }
 

@@ -24,7 +24,7 @@ export const useVacancyStore = create((set) => ({
       const searchParams = new URLSearchParams();
       for (let key in filters) {
         const value = filters[key];
-        if (value && key !== "city" && key !== "stack") {
+        if (value && key !== "stack") {
           if (Array.isArray(value)) {
             value.forEach((item) => {
               searchParams.append(key, item);
@@ -38,10 +38,7 @@ export const useVacancyStore = create((set) => ({
       if (filters.stack.length) {
         searchParams.append("query", filters.stack.join("+"));
       }
-      searchParams.append(
-        "text",
-        `${defQuery} ${filters.city.join("+") || city}`
-      );
+      searchParams.append("text", [defQuery, ...filters.stack].join(" "));
 
       searchParams.append("order_by", defSort);
       searchParams.append("per_page", CARD_FOR_PAGE);

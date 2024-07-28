@@ -3,7 +3,7 @@ import { deepEqual } from "../utils/deepEqual";
 import { getFiltersFromUrl } from "../utils/getFiltersFromUrl";
 
 export const defaultParams = {
-  city: [],
+  area: [],
   employment: [],
   period: "",
   experience: "",
@@ -50,7 +50,7 @@ export const useFiltersStore = create((set, get) => ({
   reset: () => {
     set({
       params: {
-        city: [],
+        area: [],
         employment: [],
         period: "",
         experience: "",

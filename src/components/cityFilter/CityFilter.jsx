@@ -8,7 +8,7 @@ import areasData from "../../data/areasData.json";
 import styles from "./CityFilter.module.css";
 
 const CityFilter = ({ className }) => {
-  const { params, set, isChecked, reset, isChanged } = useFiltersStore();
+  const { params, set, isChecked } = useFiltersStore();
   const [showDropdown, setShowDropdown] = useState(false);
   const [inputValue, setInputValue] = useState("");
 
@@ -16,29 +16,22 @@ const CityFilter = ({ className }) => {
     setShowDropdown(false);
   });
 
-  // const autocompleteItems = areasData.flatMap((item) => [
-  //   item.name,
-  //   item.areas,
-  // ]);
-
   const flat = (arr) =>
     arr.reduce(
       (prev, cur) => [
         ...prev,
-        { type: "checkbox", name: "city", value: cur.name, text: cur.name },
+        { type: "checkbox", name: "area", value: cur.id, text: cur.name },
         ...flat(cur.areas),
       ],
       []
     );
 
-  const selectedItems = params.city.map((item) => ({
-    type: "checkbox",
-    name: "city",
-    value: item,
-    text: item,
-  }));
-  const autocompleteItems = flat(areasData).filter((item) =>
-    item.value.toLowerCase().includes(inputValue.toLowerCase())
+  const allItems = flat(areasData);
+  const autocompleteItems = allItems.filter((item) =>
+    item.text.toLowerCase().includes(inputValue.toLowerCase())
+  );
+  const selectedItems = allItems.filter((item) =>
+    params.area.some((areaNumber) => areaNumber === item.value)
   );
 
   return (

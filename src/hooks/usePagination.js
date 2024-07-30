@@ -7,11 +7,10 @@ const range = (start, end) => {
 
 export const usePagination = ({
   totalCount,
-  pageSize,
   siblingCount = 1,
   currentPage,
 }) => {
-  const totalPageCount = Math.ceil(totalCount / pageSize);
+  const totalPageCount = Math.ceil(totalCount);
 
   const totalPageNumbers = siblingCount + 5;
 

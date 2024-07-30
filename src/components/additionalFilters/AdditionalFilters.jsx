@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import FilterItem from "../filterList/filterItem/FilterItem";
 import Checkbox from "../checkbox/Checkbox";
 import NestedLayout from "../nestedLayout/NestedLayout";
@@ -8,10 +8,15 @@ import { otherFiltersData } from "../../data/filterData";
 import ModalLayout from "../modalLayout/ModalLayout";
 
 const AdditionalFilters = ({ className }) => {
-  const { set, isChecked } = useFiltersStore();
+  const { params, set, isChecked } = useFiltersStore();
   const [showDropdown, setShowDropdown] = useState(false);
   const [isOpenFilter, setIsOpenFilter] = useState(() =>
     Object.fromEntries(otherFiltersData.map((_, index) => [index, false]))
+  );
+  const [filtersCount, setFiltersCount] = useState({});
+  const totalCount = Object.keys(filtersCount).reduce(
+    (acc, key) => acc + filtersCount[key],
+    0
   );
 
   const ref = useClickOutside(() => {
@@ -26,6 +31,24 @@ const AdditionalFilters = ({ className }) => {
     }));
   };
 
+  useEffect(() => {
+    otherFiltersData.forEach((dropdown) => {
+      let count = 0;
+
+      dropdown.items.forEach((filterItem) => {
+        const filter = params[filterItem.name];
+        const isSelected = Array.isArray(filter)
+          ? filter.some((dropdown) => dropdown === filterItem.value)
+          : filter && filter === filterItem.value;
+        if (isSelected) count++;
+      });
+      setFiltersCount((prev) => ({
+        ...prev,
+        [dropdown.text]: count,
+      }));
+    });
+  }, [params]);
+
   return (
     <FilterItem
       ref={ref}
@@ -35,6 +58,7 @@ const AdditionalFilters = ({ className }) => {
       isOpenFilter={showDropdown}
       level="high"
       className={className}
+      count={totalCount}
     >
       <ModalLayout>
         {otherFiltersData.map((item, index) => (
@@ -47,6 +71,7 @@ const AdditionalFilters = ({ className }) => {
             onClick={(e) => {
               toggleFilter(e, index);
             }}
+            count={filtersCount[item.text]}
           >
             <NestedLayout>
               <Checkbox

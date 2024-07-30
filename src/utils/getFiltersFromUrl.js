@@ -7,8 +7,10 @@ export const getFiltersFromUrl = () => {
     const value = defaultParams[key];
     parsedParams[key] = Array.isArray(value)
       ? url.searchParams.getAll(key)
-      : url.searchParams.get(key);
+      : url.searchParams.get(key) || "";
   }
 
-  return parsedParams;
+  return {
+    ...parsedParams,
+  };
 };

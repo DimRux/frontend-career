@@ -1,3 +1,8 @@
+.dropdownOpened {
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
 .dropdown {
   gap: 4px;
   padding: 8px 24px;

@@ -2,10 +2,8 @@ import { useEffect } from "react";
 import { useVacancyStore } from "../../store/vacancyStore";
 import { Pagination } from "../pagination/Pagination";
 import VacancyList from "../vacancyList/VacancyList";
-import { CARD_FOR_PAGE } from "../../constants";
 
 import styles from "./vacancyListPagination.module.css";
-import { useParamsHandler } from "../../hooks/useParamsHandler";
 import { useFiltersStore } from "../../store/filtersStore";
 
 export const VacancyListPagination = () => {
@@ -32,7 +30,6 @@ export const VacancyListPagination = () => {
         className={styles.pagination}
         currentPage={page}
         totalCount={totalCountPage}
-        pageSize={CARD_FOR_PAGE}
         onPageChange={(page) => setPage(page)}
         disabled={loading}
       />

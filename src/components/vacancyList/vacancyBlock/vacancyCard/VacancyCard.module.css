@@ -9,6 +9,14 @@
   cursor: pointer;
 }
 
+.card.hidden {
+  display: none;
+}
+
+.card.hidden.included {
+  display: grid;
+}
+
 .card:hover {
   box-shadow: var(--hover-shadow);
 }
@@ -66,7 +74,12 @@
 }
 
 .card:hover .eye {
-  opacity: 100;
+  opacity: 1;
+}
+
+.card.hidden.included .eye {
+  color: var(--blue);
+  opacity: 1;
 }
 
 .upContent {
@@ -91,10 +104,6 @@
 .experience {
   display: flex;
   gap: 8px;
-}
-
-.hidden {
-  display: none;
 }
 
 @media (min-width: 1600px) {

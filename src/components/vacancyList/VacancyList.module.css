@@ -1,9 +1,25 @@
 .wrapper {
   display: grid;
-  width: 100%;
   gap: 32px;
   padding: 32px 0 32px 0;
   margin: 0;
+}
+
+.wrapper.isEmpty {
+  height: calc(100vh - 72px - 84px);
+}
+
+.emptyState {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 528px;
+  padding: 20px;
+  color: var(--darkGrey);
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1.5;
+  text-align: center;
 }
 
 .skeleton {

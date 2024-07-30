@@ -23,8 +23,8 @@
 
 .filterItem {
   height: 48px;
-  transition: box-shadow 0.2s;
   box-shadow: var(--shadow);
+  transition: box-shadow 0.2s ease-in-out, border-radius 0.2s ease-in-out;
 }
 
 .filterItem:hover {

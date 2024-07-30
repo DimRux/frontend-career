@@ -1,17 +1,24 @@
 import React from "react";
 import styles from "./VacancyCard.module.css";
 import Icon from "../../../icon/Icon";
-import { useVacancyHidden, useVacancyLocal } from "../../../../store";
+import {
+  useVacancyHidden,
+  useVacancyLocal,
+  useVacancyStore,
+} from "../../../../store";
 
 const VacancyCard = ({ card }) => {
   const { getVacancyById, close } = useVacancyLocal();
-  const { hiddenVacancy, addVacancy } = useVacancyHidden();
+  const { hiddenVacancy, addVacancy, removeVacancy } = useVacancyHidden();
+  const { includingHidden } = useVacancyStore();
 
   const isHidden = hiddenVacancy?.includes(card?.id);
 
   return (
     <li
-      className={`${styles.card} ${isHidden && styles.hidden}`}
+      className={`${styles.card} ${isHidden && styles.hidden} ${
+        includingHidden && isHidden && styles.included
+      }`}
       onClick={(e) => {
         if (e.target instanceof HTMLAnchorElement) return;
         close();
@@ -31,10 +38,14 @@ const VacancyCard = ({ card }) => {
           <button
             onClick={(e) => {
               e.stopPropagation();
-              addVacancy(card?.id);
+              isHidden ? removeVacancy(card?.id) : addVacancy(card?.id);
             }}
           >
-            <Icon name={"slashEye"} className={styles.eye} />
+            {isHidden ? (
+              <Icon name={"eye"} className={styles.eye} />
+            ) : (
+              <Icon name={"slashEye"} className={styles.eye} />
+            )}
           </button>
         </div>
       </div>

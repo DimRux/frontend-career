@@ -14,6 +14,7 @@ export const defaultParams = {
   only_with_salary: [],
   part_time: [],
   label: [],
+  with_hidden: [],
 };
 
 export const useFiltersStore = create((set, get) => ({
@@ -61,6 +62,7 @@ export const useFiltersStore = create((set, get) => ({
         only_with_salary: [],
         part_time: [],
         label: [],
+        with_hidden: [],
       },
     });
   },

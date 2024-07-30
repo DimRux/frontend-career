@@ -10,12 +10,13 @@ import { scrollTop } from "../utils/scrollTop";
 const defQuery = "frontend";
 const defSort = "publication_time";
 
-export const useVacancyStore = create((set) => ({
+export const useVacancyStore = create((set, get) => ({
   list: [],
   page: 1,
   setPage: (newPage) => set({ page: newPage }),
   loading: false,
   totalCountPage: null,
+  includingHidden: false,
   error: "",
   fetch: async (city = "", today = false, page, filters) => {
     try {
@@ -24,7 +25,7 @@ export const useVacancyStore = create((set) => ({
       const searchParams = new URLSearchParams();
       for (let key in filters) {
         const value = filters[key];
-        if (value && key !== "stack") {
+        if (value && key !== "stack" && key !== "with_hidden") {
           if (Array.isArray(value)) {
             value.forEach((item) => {
               searchParams.append(key, item);
@@ -34,6 +35,10 @@ export const useVacancyStore = create((set) => ({
           }
         }
       }
+
+      set({
+        includingHidden: Boolean(filters.with_hidden.length),
+      });
 
       if (filters.stack.length) {
         searchParams.append("query", filters.stack.join("+"));
@@ -57,7 +62,7 @@ export const useVacancyStore = create((set) => ({
       const res = parseResultVacancy(schemeResultVacancy(result.items));
 
       const group = groupResultVacancyByDate(res);
-      set({ totalCountPage: result.found });
+      set({ totalCountPage: result.pages });
       set({ list: today ? [group[0]] : group });
       scrollTop();
     } catch (e) {

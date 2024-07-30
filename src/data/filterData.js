@@ -283,8 +283,8 @@ export const otherFiltersData = [
       },
       {
         type: "checkbox",
-        name: "other-parameters",
-        value: "hidden",
+        name: "with_hidden",
+        value: "true",
         text: "Скрытые вакансии",
       },
       {

@@ -34,6 +34,9 @@ const CityFilter = ({ className }) => {
     params.area.some((areaNumber) => areaNumber === item.value)
   );
 
+  const isShown =
+    showDropdown && (selectedItems.length > 0 || inputValue.length >= 3);
+
   return (
     <FilterItem
       ref={ref}
@@ -43,10 +46,8 @@ const CityFilter = ({ className }) => {
       value={inputValue}
       onChange={(e) => setInputValue(e.target.value)}
       onClick={() => setShowDropdown(true)}
-      isOpenFilter={
-        showDropdown && (selectedItems.length > 0 || inputValue.length >= 3)
-      }
-      className={className}
+      isOpenFilter={isShown}
+      className={`${className} ${isShown ? styles.dropdownOpened : ""}`}
       count={selectedItems.length}
     >
       <ModalLayout className={styles.dropdown}>

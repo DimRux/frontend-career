@@ -9,7 +9,6 @@ export const Pagination = ({
   totalCount,
   siblingCount = 1,
   currentPage,
-  pageSize,
   className,
   disabled,
 }) => {
@@ -17,7 +16,6 @@ export const Pagination = ({
     currentPage,
     totalCount,
     siblingCount,
-    pageSize,
   });
 
   if (currentPage === 0 || paginationRange.length < 2) {

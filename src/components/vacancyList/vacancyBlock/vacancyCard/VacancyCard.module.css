@@ -69,8 +69,13 @@
 }
 
 .eye {
+  color: var(--grey);
   opacity: 0;
-  transition: opacity 0.2s;
+  transition: opacity 0.2s ease-in-out, color 0.2s ease-in-out;
+}
+
+.eye:hover {
+  color: var(--blue);
 }
 
 .card:hover .eye {

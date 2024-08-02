@@ -8,9 +8,9 @@ import areasData from "../../data/areasData.json";
 import styles from "./CityFilter.module.css";
 
 const CityFilter = ({ className }) => {
-  const { params, set, isChecked } = useFiltersStore();
+  const { params, set, isChecked, inputValue, setInputValue } =
+    useFiltersStore();
   const [showDropdown, setShowDropdown] = useState(false);
-  const [inputValue, setInputValue] = useState("");
 
   const ref = useClickOutside(() => {
     setShowDropdown(false);

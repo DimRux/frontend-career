@@ -6,12 +6,17 @@
   background-color: var(--white-full);
   border-radius: 16px;
   padding: 0 24px;
-  gap: 16px;
+  gap: 8px;
   position: relative;
 }
 
 .wrapper[data-level="low"] {
-  padding: 16px 21px 16px 24px;
+  padding-right: 21px;
+}
+
+.wrapper[data-level="low"] .title {
+  flex: 0 0 48px;
+  height: 48px;
 }
 
 .wrapper:not(:has(input)) {

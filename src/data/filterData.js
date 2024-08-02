@@ -285,13 +285,7 @@ export const otherFiltersData = [
         type: "checkbox",
         name: "with_hidden",
         value: "true",
-        text: "Скрытые вакансии",
-      },
-      {
-        type: "checkbox",
-        name: "part_time",
-        value: "from_four_to_six_hours_in_a_day",
-        text: "От 4х часов в день",
+        text: "Включая скрытые вакансии",
       },
       {
         type: "checkbox",

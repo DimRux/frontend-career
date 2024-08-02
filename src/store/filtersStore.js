@@ -1,6 +1,7 @@
 import { create } from "zustand";
 import { deepEqual } from "../utils/deepEqual";
 import { getFiltersFromUrl } from "../utils/getFiltersFromUrl";
+import { cloneDeep } from "../utils/cloneDeep";
 
 export const defaultParams = {
   area: [],
@@ -19,9 +20,11 @@ export const defaultParams = {
 
 export const useFiltersStore = create((set, get) => ({
   params: {
-    ...defaultParams,
+    ...cloneDeep(defaultParams),
     ...getFiltersFromUrl(),
   },
+  inputValue: "",
+  setInputValue: (newValue) => set({ inputValue: newValue }),
   set: (field, value) => {
     const newParams = { ...get().params };
 
@@ -50,20 +53,8 @@ export const useFiltersStore = create((set, get) => ({
   },
   reset: () => {
     set({
-      params: {
-        area: [],
-        employment: [],
-        period: "",
-        experience: "",
-        schedule: [],
-        stack: [],
-        education: [],
-        salary: "",
-        only_with_salary: [],
-        part_time: [],
-        label: [],
-        with_hidden: [],
-      },
+      params: cloneDeep(defaultParams),
+      inputValue: "",
     });
   },
   isChanged: () => !deepEqual(get().params, defaultParams),

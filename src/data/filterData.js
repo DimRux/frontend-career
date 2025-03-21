@@ -329,3 +329,10 @@ export const briefCase = [
     text: "Проектная работа",
   },
 ];
+
+export const typeWork = [{
+  type: "dropdown",
+  text: "Тип занятости",
+  icon: "briefCase",
+  items: briefCase,
+}];

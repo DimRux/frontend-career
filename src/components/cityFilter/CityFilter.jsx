@@ -7,7 +7,7 @@ import ModalLayout from "../modalLayout/ModalLayout";
 import areasData from "../../data/areasData.json";
 import styles from "./CityFilter.module.css";
 
-const CityFilter = ({ className }) => {
+const CityFilter = ({ className, changeActiveItem }) => {
   const { params, set, isChecked, inputValue, setInputValue } =
     useFiltersStore();
   const [showDropdown, setShowDropdown] = useState(false);
@@ -45,7 +45,7 @@ const CityFilter = ({ className }) => {
       text="Город"
       value={inputValue}
       onChange={(e) => setInputValue(e.target.value)}
-      onClick={() => setShowDropdown(true)}
+      onClick={() => { setShowDropdown(true); changeActiveItem() }}
       isOpenFilter={isShown}
       className={`${className} ${isShown ? styles.dropdownOpened : ""}`}
       count={selectedItems.length}

@@ -16,6 +16,7 @@ import { Salary } from './icons/Salary';
 import { TomeJob } from './icons/TomeJob';
 import { MoreFilters } from './icons/MoreFilters';
 import { Eye } from './icons/Eye';
+import { MenuIcon } from './icons/MenuIcon';
 
 const Icon = ({ className, name }) => {
   switch (name) {
@@ -53,6 +54,8 @@ const Icon = ({ className, name }) => {
       return <TomeJob className={className} />;
     case 'moreFilters':
       return <MoreFilters className={className} />;
+    case 'menu':
+      return <MenuIcon className={className} />;
     default:
       return null;
   }

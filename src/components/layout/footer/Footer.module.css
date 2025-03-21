@@ -4,4 +4,19 @@
   line-height: 20px;
   font-weight: 500;
   color: var(--darkGrey);
+  margin-top: auto;
+}
+
+@media (max-width: 1023px) {
+  .wrapper {
+    padding: 24px 0;
+  }
+}
+
+@media (max-width: 400px) {
+  .wrapper{
+    font-size: 12px;
+    line-height: 16px;
+    padding: 16px 0;
+  }
 }

@@ -10,21 +10,19 @@
 
 .container {
   display: grid;
+  align-items: center;
   width: 100%;
   padding: 24px 40px;
-  min-width: 1024px;
   max-width: 1200px;
 }
 
-.controls {
-  display: flex;
-  gap: 72px;
+.iconClear {
+  width: 24px;
+  height: 24px;
 }
 
-.navButton {
-  font-size: 14px;
-  line-height: 20px;
-  font-weight: bold;
+.iconClear path {
+  fill: #000000;
 }
 
 @media (min-width: 1600px) {
@@ -42,5 +40,21 @@
 @media (max-width: 1279px) {
   .container {
     grid-template-columns: 1fr 2.15fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .container {
+    grid-template-columns: 1fr 2fr 0.1fr;
+  }}
+
+@media (max-width: 767px) {
+  .container {
+    padding: 16px 20px;
+    grid-template-columns: 3fr 0fr;
+  }
+  .logo {
+    width: 118px;
+    height: 16px;
   }
 }

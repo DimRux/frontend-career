@@ -2,6 +2,7 @@ import React, { forwardRef } from "react";
 import styles from "./FilterItem.module.css";
 import Icon from "../../icon/Icon";
 import Button from "../../button/Button";
+import { useResize } from "../../../hooks/useResize";
 
 const FilterItem = forwardRef((props, ref) => {
   const {
@@ -18,6 +19,10 @@ const FilterItem = forwardRef((props, ref) => {
     count,
     ...otherProps
   } = props;
+
+  const isMobile = useResize(767);
+
+  const isAddotopnalFilterInMobile = isMobile && iconName === 'filter';
 
   return (
     <>
@@ -43,12 +48,12 @@ const FilterItem = forwardRef((props, ref) => {
               data-active={value ? "true" : "false"}
             />
           ) : (
-            <span className={styles.input}>{text}</span>
+            text && (<span className={styles.input}>{text}</span>)
           )}
           {count > 0 && !value && (
             <div className={styles.countBadge}>{count}</div>
           )}
-          {type === "dropdown" && (
+          {(type === "dropdown" && !isAddotopnalFilterInMobile) && (
             <Icon
               name="chevron"
               className={`${styles.chevron} ${

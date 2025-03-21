@@ -7,7 +7,28 @@
 
 .wrapper {
   margin: auto;
-  min-width: 1024px;
   max-width: 1200px;
   padding: 72px 40px 0 40px;
+}
+
+.menu {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  margin: auto 0;
+}
+
+@media (max-width: 768px) {
+  .wrapper {
+    height: 100vh;
+    padding: 72px 18px 0 18px;
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 375px) {
+  .menu {
+    gap: 24px;
+  }
 }

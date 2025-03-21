@@ -82,6 +82,11 @@
   color: var(--black);
 }
 
+input[type="text" i] {
+  padding-block: 0;
+  padding-inline: 0;
+}
+
 .chevron {
   transform: rotate(0);
   transition: transform 0.3s;

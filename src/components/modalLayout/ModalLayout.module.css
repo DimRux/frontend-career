@@ -21,3 +21,12 @@
   font-weight: 700;
   color: var(--black);
 }
+
+@media (max-width: 767px) {
+  .modal {
+    left: auto;
+    right: 0;
+    width: 100%;
+    min-width: 335px;
+  }
+}

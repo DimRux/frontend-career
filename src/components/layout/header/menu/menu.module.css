@@ -1,0 +1,10 @@
+.controls {
+  display: flex;
+  gap: 72px;
+}
+
+.navButton {
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: bold;
+}

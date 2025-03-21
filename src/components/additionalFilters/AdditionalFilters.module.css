@@ -1,0 +1,13 @@
+.item {
+  flex-direction: row;
+}
+
+@media (max-width: 767px) {
+  .item  div {
+    gap: 12px;
+  }
+
+  .child div {
+    gap: 16px;
+  }
+}

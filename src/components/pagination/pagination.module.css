@@ -43,3 +43,21 @@
 .disabled {
   pointer-events: none;
 }
+
+@media (max-width: 400px) {
+  .wrapper {
+    gap: 4px;
+  }
+
+  .btn {
+    padding: 10px 8px;
+    font-size: 12px;
+    line-height: 16px;
+    min-width: 41px;
+  }
+
+  .item {
+    padding: 10px 8px;
+    min-width: 41px;
+  }
+}

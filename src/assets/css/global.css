@@ -24,7 +24,6 @@ html {
 
 body {
   margin: 0;
-  min-width: 1024px;
   font-family: Montserrat, sans-serif;
   background: var(--white-cream);
 }

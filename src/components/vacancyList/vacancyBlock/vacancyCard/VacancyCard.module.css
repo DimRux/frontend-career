@@ -50,7 +50,7 @@
   transition: opacity 0.3s ease-in-out;
 }
 
-.title > a {
+.title>a {
   color: inherit;
   text-decoration: none;
 }
@@ -93,7 +93,7 @@
   transition: opacity 0.3s ease-in-out;
 }
 
-.upContent > a {
+.upContent>a {
   color: inherit;
   text-decoration: none;
 }
@@ -130,8 +130,48 @@
 }
 
 @media (min-width: 1024px) {
+
   .title:hover,
   .upContent:hover {
     opacity: 0.8;
+  }
+}
+
+@media (max-width: 1023px) {
+  .card {
+    padding: 24px;
+    gap: 12px;
+  }
+
+  .upContent {
+    gap: 6px;
+  }
+
+  .additional {
+    gap: 12px;
+  }
+}
+
+@media (max-width: 767px) {
+  .card {
+    padding: 16px;
+  }
+
+  .title {
+    font-size: 14px;
+    line-height: 20px;
+  }
+
+  .card .salary {
+    font-size: 14px;
+    line-height: 20px;
+  }
+
+  .upContent {
+    gap: 4px;
+  }
+
+  .additional {
+    gap: 8px;
   }
 }

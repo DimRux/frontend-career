@@ -4,6 +4,7 @@
   list-style: none;
   width: 100%;
   margin: 0;
+  padding-top: 18px;
 }
 
 .title {
@@ -19,4 +20,39 @@
   display: grid;
   gap: 32px;
   grid-template-columns: repeat(3, 1fr);
+}
+
+@media (min-width: 768px) and (max-width: 1023px) {
+  .wrapper {
+    gap: 24px;
+  }
+
+  .cardsBlock {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+  }
+}
+
+@media (max-width: 767px) {
+  .wrapper {
+    padding-top: 21px;
+    gap: 16px;
+  }
+
+  .title {
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 28px;
+  }
+
+  .cardsBlock {
+    grid-template-columns: repeat(1, 1fr);
+    gap: 16px;
+  }
+}
+
+@media (max-width: 767px) {
+  .wrapper {
+    padding-top: 22px;
+  }
 }

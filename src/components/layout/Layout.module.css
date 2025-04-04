@@ -18,17 +18,29 @@
   margin: auto 0;
 }
 
+.wrapperShow {
+  visibility: visible;
+}
+
+.wrapperHidden {
+  visibility: hidden;
+}
+
 @media (max-width: 768px) {
   .wrapper {
     height: 100vh;
-    padding: 72px 18px 0 18px;
     display: flex;
     flex-direction: column;
+    padding: 72px 20px 0 20px;
   }
 }
 
-@media (max-width: 375px) {
+@media (max-width: 440px) {
   .menu {
     gap: 24px;
+  }
+
+  .wrapper {
+    padding: 56px 20px 0 20px;
   }
 }

@@ -12,6 +12,7 @@
 
 .resetWrapper {
   width: 100%;
+  position: absolute;
   text-align: end;
 }
 
@@ -45,6 +46,12 @@
   }
 }
 
+@media (max-width: 768px) {
+  .list {
+    gap: 24px;
+  }
+}
+
 @media (max-width: 767px) {
   .wrapper {
     padding-top: 7px;
@@ -58,6 +65,12 @@
     grid-template-columns: 1.97fr 0.03fr;
     gap: 24px;
     margin-bottom: 12px;
+  }
+}
+
+@media (max-width: 440px) {
+  .wrapper {
+    padding-top: 24px;
   }
 }
 

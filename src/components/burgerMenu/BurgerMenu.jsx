@@ -1,9 +1,10 @@
+import { forwardRef } from "react"
 import styles from "./burgerMenu.module.css"
 
-export const BurgerMenu = ({ children }) => {
+export const BurgerMenu = forwardRef(({ children, className }, ref) => {
   return (
-    <div className={styles.wrapper}>
+    <div ref={ref} className={`${styles.wrapper} ${className}`}>
       {children}
     </div>
   )
-}
+})

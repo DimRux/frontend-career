@@ -1,5 +1,6 @@
-export const Calendar = () => (
+export const Calendar = ({ className }) => (
   <svg
+    className={className}
     width='16'
     height='16'
     viewBox='0 0 16 16'

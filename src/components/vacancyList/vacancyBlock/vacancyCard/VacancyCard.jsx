@@ -6,12 +6,13 @@ import {
   useVacancyLocal,
   useVacancyStore,
 } from "../../../../store";
+import { useResize } from "../../../../hooks/useResize";
 
 const VacancyCard = ({ card }) => {
   const { getVacancyById, close } = useVacancyLocal();
   const { hiddenVacancy, addVacancy, removeVacancy } = useVacancyHidden();
   const { includingHidden } = useVacancyStore();
-
+  const isMobile = useResize(768);
   const isHidden = hiddenVacancy?.includes(card?.id);
 
   return (
@@ -28,9 +29,9 @@ const VacancyCard = ({ card }) => {
       <div className={styles.main}>
         <div className={styles.headerBlock}>
           <h4 className={styles.title} title={card.name}>
-            <a href={card.url} target="_blank">
+            <span>
               {card.name}
-            </a>
+            </span>
           </h4>
           <p className={styles.salary}>{card.salaryFormat}</p>
         </div>
@@ -42,18 +43,18 @@ const VacancyCard = ({ card }) => {
             }}
           >
             {isHidden ? (
-              <Icon name={"eye"} className={styles.eye} />
+              <Icon name={"eye"} className={`${styles.eye} ${isMobile && styles.eyeMobile}`} />
             ) : (
-              <Icon name={"slashEye"} className={styles.eye} />
+              <Icon name={"slashEye"} className={`${styles.eye} ${isMobile && styles.eyeMobile}`} />
             )}
           </button>
         </div>
       </div>
       <div className={styles.additional}>
         <div className={styles.upContent}>
-          <a href={card.employerUrl} target="_blank">
+          <span>
             {card.company}
-          </a>
+          </span>
           <p>{card.city}</p>
         </div>
         <p className={styles.experience}>

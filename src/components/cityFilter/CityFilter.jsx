@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useClickOutside } from "../../hooks/useClickOutside";
 import { useFiltersStore } from "../../store/filtersStore";
 import Checkbox from "../checkbox/Checkbox";
@@ -6,8 +6,10 @@ import FilterItem from "../filterList/filterItem/FilterItem";
 import ModalLayout from "../modalLayout/ModalLayout";
 import areasData from "../../data/areasData.json";
 import styles from "./CityFilter.module.css";
+import { useResize } from "../../hooks/useResize";
+import { ACTIVE_ITEMS } from "../../constants/constants";
 
-const CityFilter = ({ className, changeActiveItem }) => {
+const CityFilter = ({ className, isMiniMobile, changeActiveItem }) => {
   const { params, set, isChecked, inputValue, setInputValue } =
     useFiltersStore();
   const [showDropdown, setShowDropdown] = useState(false);
@@ -15,6 +17,12 @@ const CityFilter = ({ className, changeActiveItem }) => {
   const ref = useClickOutside(() => {
     setShowDropdown(false);
   });
+
+  useEffect(() => {
+    if (showDropdown) {
+      changeActiveItem();
+    }
+  }, [isMiniMobile])
 
   const flat = (arr) =>
     arr.reduce(

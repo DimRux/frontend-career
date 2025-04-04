@@ -8,8 +8,9 @@ import { otherFiltersData, typeWork } from "../../data/filterData";
 import ModalLayout from "../modalLayout/ModalLayout";
 import { useResize } from "../../hooks/useResize";
 import styles from './AdditionalFilters.module.css'
+import { ACTIVE_ITEMS } from "../../constants/constants";
 
-const AdditionalFilters = ({ className, isActived, changeActiveItem }) => {
+const AdditionalFilters = ({ className, isActived, isMiniMobile, changeActiveItem, setActiveItem }) => {
   const { params, set, isChecked } = useFiltersStore();
   const isTablet = useResize();
   const isMobile = useResize(767);
@@ -23,9 +24,9 @@ const AdditionalFilters = ({ className, isActived, changeActiveItem }) => {
   const [filtersCount, setFiltersCount] = useState({});
   const [totalCount, setTotalCount] = useState(0);
 
-
   const ref = useClickOutside(() => {
     setShowDropdown(false);
+    setActiveItem(ACTIVE_ITEMS.none);
   });
 
   const toggleFilter = (e, index) => {
@@ -35,6 +36,12 @@ const AdditionalFilters = ({ className, isActived, changeActiveItem }) => {
       [index]: !prevState[index],
     }));
   };
+
+  useEffect(() => {
+    if (showDropdown) {
+      changeActiveItem();
+    }
+  }, [isMiniMobile])
 
   useEffect(() => {
     const count = Object.keys(filtersCount).reduce((acc, key) => acc + filtersCount[key], 0);
@@ -70,13 +77,13 @@ const AdditionalFilters = ({ className, isActived, changeActiveItem }) => {
       ref={ref}
       iconName={"filter"}
       text={(isMobile && !isActived) ? "" : "Дополнительные фильтры"}
-      onClick={() => {setShowDropdown((prev) => !prev); changeActiveItem()}}
+      onClick={() => { setShowDropdown((prev) => !prev); changeActiveItem() }}
       isOpenFilter={showDropdown}
       level="high"
       className={`${className} ${styles.item}`}
       count={totalCount}
     >
-      <ModalLayout>
+      <ModalLayout classNameContainer={styles.modal}>
         {resultFilteresData.map((item, index) => (
           <FilterItem
             key={index}

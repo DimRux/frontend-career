@@ -74,6 +74,10 @@
   transition: opacity 0.2s ease-in-out, color 0.2s ease-in-out;
 }
 
+.eyeMobile {
+  opacity: 1;
+}
+
 .eye:hover {
   color: var(--blue);
 }
@@ -119,13 +123,13 @@
 
 @media (min-width: 1280px) and (max-width: 1599px) {
   .main {
-    grid-template-columns: 1fr 0.3fr;
+    grid-template-columns: 1fr 0.2fr;
   }
 }
 
 @media (max-width: 1279px) {
   .main {
-    grid-template-columns: 1fr 0.8fr;
+    grid-template-columns: 1fr 0.265fr;
   }
 }
 
@@ -153,6 +157,10 @@
 }
 
 @media (max-width: 767px) {
+  .main {
+    grid-template-columns: 1fr 0.054fr;
+  }
+
   .card {
     padding: 16px;
   }

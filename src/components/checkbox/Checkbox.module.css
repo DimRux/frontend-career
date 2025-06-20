@@ -19,6 +19,7 @@
   width: 16px;
   height: 16px;
   border: 1.5px solid var(--grey);
+  flex-shrink: 0;
 }
 
 .input[type='checkbox'] ~ .label::before {

@@ -9,7 +9,7 @@ import styles from "./CityFilter.module.css";
 import { useResize } from "../../hooks/useResize";
 import { ACTIVE_ITEMS } from "../../constants/constants";
 
-const CityFilter = ({ className, isMiniMobile, changeActiveItem }) => {
+const CityFilter = ({ className, isMobile, changeActiveItem }) => {
   const { params, set, isChecked, inputValue, setInputValue } =
     useFiltersStore();
   const [showDropdown, setShowDropdown] = useState(false);
@@ -22,7 +22,7 @@ const CityFilter = ({ className, isMiniMobile, changeActiveItem }) => {
     if (showDropdown) {
       changeActiveItem();
     }
-  }, [isMiniMobile])
+  }, [isMobile])
 
   const flat = (arr) =>
     arr.reduce(
@@ -43,7 +43,8 @@ const CityFilter = ({ className, isMiniMobile, changeActiveItem }) => {
   );
 
   const isShown =
-    showDropdown && (selectedItems.length > 0 || inputValue.length >= 3);
+    (showDropdown && selectedItems.length > 0 && inputValue.length < 3) || 
+    (showDropdown && inputValue.length >= 3 && autocompleteItems.length > 0);
 
   return (
     <FilterItem
@@ -53,7 +54,7 @@ const CityFilter = ({ className, isMiniMobile, changeActiveItem }) => {
       text="Город"
       value={inputValue}
       onChange={(e) => setInputValue(e.target.value)}
-      onClick={() => { setShowDropdown(true); changeActiveItem() }}
+      onClick={() => { setShowDropdown((prev) => !prev); changeActiveItem() }}
       isOpenFilter={isShown}
       className={`${className} ${isShown ? styles.dropdownOpened : ""}`}
       count={selectedItems.length}

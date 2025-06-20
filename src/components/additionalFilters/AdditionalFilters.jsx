@@ -10,10 +10,9 @@ import { useResize } from "../../hooks/useResize";
 import styles from './AdditionalFilters.module.css'
 import { ACTIVE_ITEMS } from "../../constants/constants";
 
-const AdditionalFilters = ({ className, isActived, isMiniMobile, changeActiveItem, setActiveItem }) => {
+const AdditionalFilters = ({ className, isActived, isMobile, changeActiveItem, setActiveItem }) => {
   const { params, set, isChecked } = useFiltersStore();
   const isTablet = useResize();
-  const isMobile = useResize(767);
   const filteres = Object.fromEntries(otherFiltersData.map((_, index) => [index, false]));
   const allFilteres = Object.fromEntries(typeWork.concat(otherFiltersData).map((_, index) => [index, false]));
   const [resultFilteresData, setResultFilteresData] = useState(isTablet ? typeWork.concat(otherFiltersData) : otherFiltersData)
@@ -41,7 +40,7 @@ const AdditionalFilters = ({ className, isActived, isMiniMobile, changeActiveIte
     if (showDropdown) {
       changeActiveItem();
     }
-  }, [isMiniMobile])
+  }, [isMobile])
 
   useEffect(() => {
     const count = Object.keys(filtersCount).reduce((acc, key) => acc + filtersCount[key], 0);

@@ -11,9 +11,10 @@
     gap: 16px;
   }
 }
+
 @media (max-width: 480px) {
   .modal {
-    max-width: 350px;
-    min-width: 266px;
+    max-width: 100%;
+    min-width: 230px;
   }
 }

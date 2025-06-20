@@ -12,11 +12,11 @@ import { ACTIVE_ITEMS } from "../../constants/constants";
 
 const FilterList = () => {
   const { params, reset, isChanged } = useFiltersStore();
-  const isMobile = useResize();
-  const isMiniMobile = useResize(375);
-  const isMiniMobileRef = useRef(isMiniMobile);
+  const isTablet = useResize();
+  const isMobile = useResize(767);
+  const isMobileRef = useRef(isMobile);
 
-  isMiniMobileRef.current = isMiniMobile;
+  isMobileRef.current = isMobile;
 
   const isResetBtnShown = isChanged();
   const [activeItem, setActiveItem] = useState(ACTIVE_ITEMS.none)
@@ -27,17 +27,17 @@ const FilterList = () => {
   }, [params]);
 
   useEffect(() => {
-    if (!isMiniMobile) {
+    if (!isMobile) {
       setActiveItem(ACTIVE_ITEMS.none);
     }
-  }, [isMiniMobile])
+  }, [isMobile])
 
   const changeItem = (filter) => {
-    if (isMiniMobileRef.current && activeItem !== filter) {
+    if (isMobileRef.current && activeItem !== filter) {
       setActiveItem(filter);
     }
 
-    if (isMiniMobileRef.current && activeItem === filter) {
+    if (isMobileRef.current && activeItem === filter) {
       setActiveItem(ACTIVE_ITEMS.none);
     }
   }
@@ -48,17 +48,17 @@ const FilterList = () => {
         {activeItem !== ACTIVE_ITEMS.dropdown && (
           <CityFilter
             className={`${styles.filterItem} ${styles.input}`}
-            isMiniMobile={isMiniMobile}
+            isMobile={isMobile}
             changeActiveItem={() => changeItem(ACTIVE_ITEMS.input)}
             setActiveItem={setActiveItem}
           />
         )}
-        {!isMobile && <EmploymentFilter className={styles.filterItem} />}
+        {!isTablet && <EmploymentFilter className={styles.filterItem} />}
         {activeItem !== ACTIVE_ITEMS.input && (
           <AdditionalFilters
-            className={styles.filterItem}
+            className={`${styles.filterItem} ${activeItem === ACTIVE_ITEMS.dropdown && styles.filterItemBorder}`}
             isActived={activeItem === ACTIVE_ITEMS.dropdown}
-            isMiniMobile={isMiniMobile}
+            isMobile={isMobile}
             changeActiveItem={() => changeItem(ACTIVE_ITEMS.dropdown)}
             setActiveItem={setActiveItem}
           />

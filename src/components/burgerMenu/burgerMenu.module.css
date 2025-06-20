@@ -3,9 +3,10 @@
   left: 0;
   top: 72px;
   width: 100%;
-  height: calc(100vh);
+  height: calc(100vh - 72px);
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  align-items: center;
   z-index: 1;
   background: var(--white-cream);
 }
@@ -13,5 +14,6 @@
 @media (max-width: 768px) {
   .wrapper {
     top: 56px;
+    height: calc(100vh - 56px);
   }
 }

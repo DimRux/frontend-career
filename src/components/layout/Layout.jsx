@@ -16,12 +16,25 @@ const Layout = ({ children }) => {
 
   const showBurgerMenu = isMenuOpen && isMobile;
 
+  useEffect(() => {
+    if (isMenuOpen) {
+      document.body.classList.add(styles.noBodyScroll);
+    } else {
+      document.body.classList.remove(styles.noBodyScroll);
+    }
+
+    return () => {
+      document.body.classList.remove(styles.noBodyScroll);
+    };
+  }, [isMenuOpen]);
+
   return (
     <div  className={styles.bg}>
       <Header isMenuOpen={isMenuOpen} setIsMenuOpen={setIsMenuOpen} />
       <div className={styles.wrapper}>
         <BurgerMenu ref={burgerRef} className={showBurgerMenu ? styles.wrapperShow : styles.wrapperHidden}>
           <Menu className={styles.menu} />
+          <Footer className={styles.footer} />
         </BurgerMenu>
         {children}
         <Footer />

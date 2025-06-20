@@ -1,6 +1,7 @@
 .controls {
   display: flex;
   gap: 72px;
+  flex-grow: 1;
 }
 
 .navButton {
